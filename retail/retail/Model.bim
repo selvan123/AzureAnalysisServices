@@ -1,0 +1,696 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "retail",
+        "connectionString": "Data Source=sqlsat919.database.windows.net;Initial Catalog=Retail;Persist Security Info=true;User ID=sqlsatadmin;Encrypt=True;TrustServerCertificate=False",
+        "impersonationMode": "impersonateAccount",
+        "account": "sqlstack",
+        "provider": "System.Data.SqlClient",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "district",
+        "columns": [
+          {
+            "name": "BusinessUnitID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "BusinessUnitID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "DistrictID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DistrictID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "District",
+            "dataType": "string",
+            "sourceColumn": "District",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DM",
+            "dataType": "string",
+            "sourceColumn": "DM",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "district",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[district].* FROM [dbo].[district] ",
+              "dataSource": "retail"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[district].* FROM [dbo].[district] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "district"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "item",
+        "columns": [
+          {
+            "name": "ItemID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ItemID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Segment",
+            "dataType": "string",
+            "sourceColumn": "Segment",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Buyer",
+            "dataType": "string",
+            "sourceColumn": "Buyer",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FamilyNane",
+            "dataType": "string",
+            "sourceColumn": "FamilyNane",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "item",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[item].* FROM [dbo].[item] ",
+              "dataSource": "retail"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[item].* FROM [dbo].[item] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "item"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "sales",
+        "columns": [
+          {
+            "name": "MonthID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ItemID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ItemID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "LocationID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LocationID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Sum_GrossMarginAmount",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Sum_GrossMarginAmount",
+            "sourceProviderType": "Single"
+          },
+          {
+            "name": "Sum_Regular_Sales_Dollars",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Sum_Regular_Sales_Dollars",
+            "sourceProviderType": "Single"
+          },
+          {
+            "name": "Sum_Markdown_Sales_Dollars",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Sum_Markdown_Sales_Dollars",
+            "sourceProviderType": "Single"
+          },
+          {
+            "name": "ScenarioID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ScenarioID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "ReportingPeriodID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ReportingPeriodID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Sum_Regular_Sales_Units",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Sum_Regular_Sales_Units",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Sum_Markdown_Sales_Units",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Sum_Markdown_Sales_Units",
+            "sourceProviderType": "SmallInt"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "sales",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[sales].* FROM [dbo].[sales] ",
+              "dataSource": "retail"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Regular_Sales_Dollars",
+            "expression": "SUM([Sum_Regular_Sales_Dollars])"
+          },
+          {
+            "name": "Markdown_Sales_Dollars",
+            "expression": "SUM([Sum_Markdown_Sales_Dollars])"
+          },
+          {
+            "name": "TotalSales",
+            "expression": "[Regular_Sales_Dollars]+[Markdown_Sales_Dollars]"
+          },
+          {
+            "name": "Regular_Sales_Units",
+            "expression": "SUM([Sum_Regular_Sales_Units])"
+          },
+          {
+            "name": "Markdown_Sales_Units",
+            "expression": "SUM([Sum_Markdown_Sales_Units])"
+          },
+          {
+            "name": "TotalUnits",
+            "expression": "[Regular_Sales_Units]+[Markdown_Sales_Units]"
+          },
+          {
+            "name": "Store Count",
+            "expression": "DISTINCTCOUNT([LocationID])"
+          },
+          {
+            "name": "TotalSalesLY",
+            "expression": "CALCULATE([TotalSales], Sales[ScenarioID]=2)"
+          },
+          {
+            "name": "TotalSalesTY",
+            "expression": "CALCULATE([TotalSales], Sales[ScenarioID]=1)",
+            "kpi": {
+              "targetExpression": "''sales''[TotalSalesLY]",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='sales'[TotalSalesTY]/'sales'[_TotalSalesTY Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.95,-1,",
+                "\t                If(x<1,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "95"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "100"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Gross Margin This Year",
+            "expression": "CALCULATE(SUM([Sum_GrossMarginAmount]), Sales[ScenarioID]=1)"
+          },
+          {
+            "name": "Gross Margin This Year %",
+            "expression": "[Gross Margin This Year]/[TotalSalesTY]"
+          },
+          {
+            "name": "Gross Margin Last Year",
+            "expression": "CALCULATE(SUM([Sum_GrossMarginAmount]), Sales[ScenarioID]=2)"
+          },
+          {
+            "name": "Gross Margin Last Year %",
+            "expression": "[Gross Margin Last Year]/[TotalSalesLY]"
+          },
+          {
+            "name": "Total Sales Var",
+            "expression": "[TotalSalesTY]-[TotalSalesLY]"
+          },
+          {
+            "name": "Total Sales Var %",
+            "expression": "IF([TotalSalesLY]<>0, [Total Sales Var]/[TotalSalesLY], BLANK())"
+          },
+          {
+            "name": "Total Units Last Year",
+            "expression": "CALCULATE([TotalUnits], Sales[ScenarioID]=2)"
+          },
+          {
+            "name": "Total Units This Year",
+            "expression": "CALCULATE([TotalUnits], Sales[ScenarioID]=1)"
+          },
+          {
+            "name": "Avg $/Unit TY",
+            "expression": "IF([Total Units This Year]<>0, [TotalSalesTY]/[Total Units This Year], BLANK())"
+          },
+          {
+            "name": "Avg $/Unit LY",
+            "expression": "IF([Total Units Last Year]<>0, [TotalSalesLY]/[Total Units Last Year], BLANK())"
+          },
+          {
+            "name": "Sales Per Sq Ft",
+            "expression": "([TotalSalesTY]/(DISTINCTCOUNT([MonthID])*SUM(Store[SellingAreaSize])))*12"
+          },
+          {
+            "name": "Total Sales Variance",
+            "expression": "[Total Sales Var]"
+          },
+          {
+            "name": "Total Sales Variance %",
+            "expression": "[Total Sales Var %]"
+          },
+          {
+            "name": "Last Year Sales",
+            "expression": "[TotalSalesLY]"
+          },
+          {
+            "name": "This Year Sales",
+            "expression": "[TotalSalesTY]",
+            "kpi": {
+              "targetExpression": "''sales''[Last Year Sales]",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='sales'[This Year Sales]/'sales'[_This Year Sales Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.95,-1,",
+                "\t                If(x<1,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "95"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "100"
+                }
+              ]
+            }
+          },
+          {
+            "name": "Average Unit Price",
+            "expression": "[Avg $/Unit TY]"
+          },
+          {
+            "name": "Average Unit Price Last Year",
+            "expression": "[Avg $/Unit LY]"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[sales].* FROM [dbo].[sales] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "sales"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "store",
+        "columns": [
+          {
+            "name": "LocationID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "LocationID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "City Name",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "City Name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Territory",
+            "dataType": "string",
+            "sourceColumn": "Territory",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "int64",
+            "sourceColumn": "PostalCode",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "OpenDate",
+            "dataType": "dateTime",
+            "sourceColumn": "OpenDate",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "SellingAreaSize",
+            "dataType": "int64",
+            "sourceColumn": "SellingAreaSize",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DistrictName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DistrictName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StoreNumberName",
+            "dataType": "string",
+            "sourceColumn": "StoreNumberName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "StoreNumber",
+            "dataType": "int64",
+            "sourceColumn": "StoreNumber",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "Chain",
+            "dataType": "string",
+            "sourceColumn": "Chain",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DM",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DM",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DistrictID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DistrictID",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "type": "calculated",
+            "name": "Open Month No",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": "MONTH([OpenDate])"
+          },
+          {
+            "type": "calculated",
+            "name": "Open Month",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "FORMAT([OpenDate], \"MMM\")",
+            "sortByColumn": "Open Month No"
+          },
+          {
+            "type": "calculated",
+            "name": "Open Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "YEAR([OpenDate])"
+          },
+          {
+            "type": "calculated",
+            "name": "Store Type",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "IF([Open Year]=2014, \"New Store\", \"Same Store\")"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "store",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[store].* FROM [dbo].[store] ",
+              "dataSource": "retail"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Open Store Count",
+            "expression": "COUNTA([OpenDate])"
+          },
+          {
+            "name": "Average Selling Area Size",
+            "expression": "AVERAGE([SellingAreaSize])"
+          },
+          {
+            "name": "Total Stores",
+            "expression": "COUNTA([StoreNumberName])"
+          },
+          {
+            "name": "New Stores",
+            "expression": "CALCULATE(COUNTA([Store Type]), FILTER(ALL(Store), [Store Type]=\"New Store\"))"
+          },
+          {
+            "name": "New Stores Target",
+            "expression": "14"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[store].* FROM [dbo].[store] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "store"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "time",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "ReportingPeriodID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ReportingPeriodID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Period",
+            "dataType": "int64",
+            "sourceColumn": "Period",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FiscalYear",
+            "dataType": "int64",
+            "sourceColumn": "FiscalYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "FiscalMonth",
+            "dataType": "string",
+            "sourceColumn": "FiscalMonth",
+            "sortByColumn": "Period",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Month",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "Month",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "time",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[time].* FROM [dbo].[time] ",
+              "dataSource": "retail"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[time].* FROM [dbo].[time] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "time"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "7597e7d3-eef5-49d4-9f5e-d1f17cff1933",
+        "fromTable": "sales",
+        "fromColumn": "ItemID",
+        "toTable": "item",
+        "toColumn": "ItemID"
+      },
+      {
+        "name": "48f92ee4-ca99-42f6-92f7-9d66d1dcbea3",
+        "fromTable": "sales",
+        "fromColumn": "LocationID",
+        "toTable": "store",
+        "toColumn": "LocationID"
+      },
+      {
+        "name": "d34fd6ab-659c-4e3f-8f65-7c769d2ef5b0",
+        "fromTable": "sales",
+        "fromColumn": "ReportingPeriodID",
+        "toTable": "time",
+        "toColumn": "ReportingPeriodID"
+      },
+      {
+        "name": "db703c8e-a11c-438c-9616-4945d7bb2185",
+        "fromTable": "store",
+        "fromColumn": "DistrictID",
+        "toTable": "district",
+        "toColumn": "DistrictID"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
